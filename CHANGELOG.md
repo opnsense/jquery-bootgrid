@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.3 (in development)
+### Enhancements & Features
+- Update dependencies to 2018 versions, eliminating 72 vulnerabilities.
+
 ## 1.3.2
 ### Bug fixes
 - Fix jQuery and Bootstrap versions in package.json, fix license info in package.json

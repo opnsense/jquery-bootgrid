@@ -102,6 +102,7 @@ module.exports = function (grunt) {
             default: {
                 options: {
                     'adjoining-classes': false,
+                    'order-alphabetical': false,
                     'important': false,
                     'outline-none': false,
                     'overqualified-elements': false
@@ -114,7 +115,7 @@ module.exports = function (grunt) {
                 curly: true,
                 eqeqeq: true,
                 immed: true,
-                latedef: true,
+                latedef: 'nofunc',
                 newcap: true,
                 noarg: true,
                 sub: true,
