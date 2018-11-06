@@ -81,7 +81,7 @@ QUnit.test("findFooterAndHeaderItems test (footer and header is string empty)", 
     var result = findFooterAndHeaderItems.call(instance, selector);
 
     // then
-    assert.equal(result.length, 0, "Foundd one element as expecte");
+    assert.equal(result.length, 0, "Found one element as expected");
     assert.ok(result.find, "Got an empty jQuery array as expected");
 });
 
