@@ -1,4 +1,4 @@
-﻿jQuery Bootgrid Plugin [![Build Status](http://img.shields.io/travis/rstaib/jquery-bootgrid/master.svg?style=flat-square)](https://travis-ci.org/rstaib/jquery-bootgrid) ![Bower version](http://img.shields.io/bower/v/jquery.bootgrid.svg?style=flat-square) ![NuGet version](http://img.shields.io/nuget/v/jquery.bootgrid.svg?style=flat-square) ![NPM version](http://img.shields.io/npm/v/jquery-bootgrid.svg?style=flat-square) ![Gratipay](http://img.shields.io/gratipay/RafaelStaib.svg?style=flat-square)
+﻿jQuery Bootgrid Plugin [![Build Status](http://img.shields.io/travis/opnsense/jquery-bootgrid/master.svg?style=flat-square)](https://travis-ci.org/opnsense/jquery-bootgrid) ![Bower version](http://img.shields.io/bower/v/jquery.bootgrid.svg?style=flat-square) ![NuGet version](http://img.shields.io/nuget/v/jquery.bootgrid.svg?style=flat-square) ![NPM version](http://img.shields.io/npm/v/jquery-bootgrid.svg?style=flat-square) ![Gratipay](http://img.shields.io/gratipay/RafaelStaib.svg?style=flat-square)
 ============
 
 Nice, sleek and intuitive. A grid control especially designed for bootstrap.
@@ -59,4 +59,7 @@ Instructions will follow soon!
 
 ## License
 
-Copyright (c) 2014-2015 Rafael J. Staib Licensed under the [MIT license](https://github.com/rstaib/jquery-bootgrid/blob/master/LICENSE.txt).
+Copyright © 2014-2015 Rafael J. Staib
+Copyright © 2018 Deciso B.V.
+
+Licensed under the [MIT license](https://github.com/opnsense/jquery-bootgrid/blob/master/LICENSE.txt).
