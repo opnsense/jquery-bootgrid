@@ -3,6 +3,7 @@
 ## 1.3.3 (in development)
 ### Enhancements & Features
 - Update dependencies to 2018 versions, eliminating 72 vulnerabilities.
+- The old, unused copy of Modernizr in the demo has been removed.
 
 ## 1.3.2
 ### Bug fixes
