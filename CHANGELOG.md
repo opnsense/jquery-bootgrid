@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.2
+### Bug fixes
+- Fix jQuery and Bootstrap versions in package.json, fix license info in package.json
+
+### Enhancements & Features
+- Use left and right single guillemets in pagination.
+- Migrated test suite to Qunit 2.8.0.
+
 ## 1.3.1
 
 ### Enhancements & Features
