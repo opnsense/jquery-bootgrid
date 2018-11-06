@@ -53,9 +53,41 @@ Instructions will follow soon!
 
 I'm always happy to help answer your questions. The best way to get quick answers is to go to [stackoverflow.com](http://stackoverflow.com) and tag your questions always with **jquery-bootgrid**.
 
+## Building
+
+### Environment
+
+jquery-bootgrid uses npm to install its own dependencies, and mono to build a NuGet package.
+
+You should install both using your package manager. On macOS, this works as follows:
+```
+brew install npm
+brew install mono
+```
+
+### Build dependencies
+
+From the folder that jquery-bootgrid resides in, run:
+```
+npm install .
+sudo npm install -g grunt
+```
+
+### Build jquery-bootgrid itself
+```
+grunt
+```
+
+If you are done with your modifications, you should increase the version number in boewer.json and package.json, 
+update the changelog, and then run:
+```
+grunt release
+```
+
+
 ## Contributing
 
-Instructions will follow soon!
+No instructions yet.
 
 ## License
 
