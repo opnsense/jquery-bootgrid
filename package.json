@@ -6,10 +6,16 @@
     "description": "Nice, sleek and intuitive. A grid control especially designed for bootstrap.",
     "homepage": "http://www.jquery-bootgrid.com",
     "author": {
-        "name": "Rafael Staib",
-        "email": "me@rafaelstaib.com",
-        "url": "http://www.rafaelstaib.com"
+        "name": "Deciso B.V.",
+        "url": "https://www.opnsense.org"
     },
+    "contributors": [
+        {
+            "name": "Rafael Staib",
+            "email": "me@rafaelstaib.com",
+            "url": "http://www.rafaelstaib.com"
+        }
+    ],
     "bugs": "https://github.com/opnsense/jquery-bootgrid/issues",
     "scripts": {
         "test": "grunt"
