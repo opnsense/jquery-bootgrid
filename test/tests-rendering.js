@@ -1,18 +1,18 @@
 /*jshint -W024 */
 /*jshint -W117 */
 
-module("render functions", {
-    setup: function ()
+QUnit.module("render functions", {
+    beforeEach: function ()
     {
         $("#qunit-fixture").html("<div id=\"header\"><div class=\"infos\"></div></div><div id=\"table\"></div><div id=\"footer\"><div class=\"infos\"></div></div>");
     },
-    teardown: function ()
+    afterEach: function ()
     {
         $("#qunit-fixture").empty();
     }
 });
 
-function renderInfosTest(expected, message, current, rowCount, total)
+function renderInfosTest(expected, message, current, rowCount, total, assert)
 {
     // given
     var instance = {
@@ -41,15 +41,19 @@ function renderInfosTest(expected, message, current, rowCount, total)
 
     // then
     var infos = instance.header.find(".infos").text();
-    equal(infos, expected, message);
+    assert.equal(infos, expected, message);
 }
 
-test("renderInfos all test", 1, function ()
+QUnit.test("renderInfos all test", function ( assert )
 {
-    renderInfosTest("11010", "Valid infos", 1, -1, 10);
+    assert.expect( 1 );
+
+    renderInfosTest("11010", "Valid infos", 1, -1, 10, assert);
 });
 
-test("renderInfos paged test", 1, function ()
+QUnit.test("renderInfos paged test", function ( assert )
 {
-    renderInfosTest("1510", "Valid infos", 1, 5, 10);
+    assert.expect( 1 );
+
+    renderInfosTest("1510", "Valid infos", 1, 5, 10, assert);
 });

@@ -1,19 +1,21 @@
 /*jshint -W024 */
 /*jshint -W117 */
 
-module("internal functions", {
-    setup: function ()
+QUnit.module("internal functions", {
+    beforeEach: function ()
     {
         $("#qunit-fixture").html("<table id=\"test\"><thead><tr><th data-column-id=\"id\"></th></tr></thead><tfoot><tr><td></td></tr></tfoot></table>");
     },
-    teardown: function ()
+    afterEach: function ()
     {
         $("#qunit-fixture").empty();
     }
 });
 
-test("findFooterAndHeaderItems test", 1, function ()
+QUnit.test("findFooterAndHeaderItems test", function ( assert )
 {
+    assert.expect( 1 );
+
     // given
     var instance = {
         footer: $("#test > tfoot"),
@@ -25,11 +27,13 @@ test("findFooterAndHeaderItems test", 1, function ()
     var result = findFooterAndHeaderItems.call(instance, selector);
 
     // then
-    equal(result.length, 2, "Found two elements as expected");
+    assert.equal(result.length, 2, "Found two elements as expected");
 });
 
-test("findFooterAndHeaderItems test (footer is null)", 1, function ()
+QUnit.test("findFooterAndHeaderItems test (footer is null)", function ( assert )
 {
+    assert.expect( 1 );
+
     // given
     var instance = {
         footer: null,
@@ -41,11 +45,13 @@ test("findFooterAndHeaderItems test (footer is null)", 1, function ()
     var result = findFooterAndHeaderItems.call(instance, selector);
 
     // then
-    equal(result.length, 1, "Found one element as expected");
+    assert.equal(result.length, 1, "Found one element as expected");
 });
 
-test("findFooterAndHeaderItems test (header is null)", 1, function ()
+QUnit.test("findFooterAndHeaderItems test (header is null)", function ( assert )
 {
+    assert.expect( 1 );
+
     // given
     var instance = {
         footer: $("#test > tfoot"),
@@ -57,11 +63,13 @@ test("findFooterAndHeaderItems test (header is null)", 1, function ()
     var result = findFooterAndHeaderItems.call(instance, selector);
 
     // then
-    equal(result.length, 1, "Found one element as expected");
+    assert.equal(result.length, 1, "Found one element as expected");
 });
 
-test("findFooterAndHeaderItems test (footer and header is string empty)", 2, function ()
+QUnit.test("findFooterAndHeaderItems test (footer and header is string empty)", function ( assert )
 {
+    assert.expect( 2 );
+
     // given
     var instance = {
         footer: "",
@@ -73,12 +81,14 @@ test("findFooterAndHeaderItems test (footer and header is string empty)", 2, fun
     var result = findFooterAndHeaderItems.call(instance, selector);
 
     // then
-    equal(result.length, 0, "Foundd one element as expecte");
-    ok(result.find, "Got an empty jQuery array as expected");
+    assert.equal(result.length, 0, "Foundd one element as expecte");
+    assert.ok(result.find, "Got an empty jQuery array as expected");
 });
 
-test("findFooterAndHeaderItems test (footer and header is null)", 2, function ()
+QUnit.test("findFooterAndHeaderItems test (footer and header is null)", function ( assert )
 {
+    assert.expect( 2 );
+
     // given
     var instance = {
         footer: null,
@@ -90,12 +100,14 @@ test("findFooterAndHeaderItems test (footer and header is null)", 2, function ()
     var result = findFooterAndHeaderItems.call(instance, selector);
 
     // then
-    equal(result.length, 0, "Found no elements as expected");
-    ok(result.find, "Got an empty jQuery array as expected");
+    assert.equal(result.length, 0, "Found no elements as expected");
+    assert.ok(result.find, "Got an empty jQuery array as expected");
 });
 
-test("getRequest post function test", 1, function ()
+QUnit.test("getRequest post function test", function ( assert )
 {
+    assert.expect( 1 );
+
     // given
     var instance = {
             options: {
@@ -124,10 +136,12 @@ test("getRequest post function test", 1, function ()
     var result = getRequest.call(instance);
 
     // then
-    propEqual(result, expected, "Valid request object");
+    assert.propEqual(result, expected, "Valid request object");
 });
 
-test("getRequest post object test", 1, function() {
+QUnit.test("getRequest post object test", function( assert ) {
+    assert.expect( 1 );
+
     // given
     var instance = {
             options: {
@@ -153,11 +167,13 @@ test("getRequest post object test", 1, function() {
     var result = getRequest.call(instance);
 
     // then
-    propEqual(result, expected, "Valid request object");
+    assert.propEqual(result, expected, "Valid request object");
 });
 
-test("getCssSelector test", 1, function ()
+QUnit.test("getCssSelector test", function ( assert )
 {
+    assert.expect( 1 );
+
     // given
     var classNames = "       itallic bold  normal   ";
 
@@ -165,11 +181,13 @@ test("getCssSelector test", 1, function ()
     var result = getCssSelector(classNames);
 
     // then
-    equal(result, ".itallic.bold.normal", "Valid css selector");
+    assert.equal(result, ".itallic.bold.normal", "Valid css selector");
 });
 
-test("getUrl function test", 1, function ()
+QUnit.test("getUrl function test", function ( assert )
 {
+    assert.expect( 1 );
+
     // given
     var instance = {
         options: {
@@ -184,11 +202,13 @@ test("getUrl function test", 1, function ()
     var result = getUrl.call(instance);
 
     // then
-    equal(result, "url/test/1", "Valid URL");
+    assert.equal(result, "url/test/1", "Valid URL");
 });
 
-test("getUrl string test", 1, function ()
+QUnit.test("getUrl string test", function ( assert )
 {
+    assert.expect( 1 );
+
     // given
     var instance = {
         options: {
@@ -200,5 +220,5 @@ test("getUrl string test", 1, function ()
     var result = getUrl.call(instance);
 
     // then
-    equal(result, "url/test/1", "Valid URL");
+    assert.equal(result, "url/test/1", "Valid URL");
 });
