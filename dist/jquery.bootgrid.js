@@ -1,6 +1,6 @@
 /*! 
- * jQuery Bootgrid v1.3.5 - 03/11/2019
- * Copyright © 2014-2015 Rafael J. Staib; Copyright © 2018-2019 Deciso B.V. (http://www.jquery-bootgrid.com)
+ * jQuery Bootgrid v1.3.5 - 11/17/2021
+ * Copyright © 2014-2015 Rafael J. Staib; Copyright © 2018-2021 Deciso B.V. (http://www.jquery-bootgrid.com)
  * Licensed under the MIT license. See LICENSE.txt for more details.
  */
 ;(function ($, window, undefined)
@@ -1219,10 +1219,10 @@ Grid.defaults = {
         datetime: {
            // convert datetime type fields from unix timestamp to readable format
            from: function (value) {
-              return moment(parseInt(value)*1000);
+              return value ? moment(parseInt(value)*1000) : "";
            },
            to: function (value) {
-              return value.format("lll");
+              return value ? value.format("lll") : "";
            }
         },
         memsize: {
@@ -1446,9 +1446,14 @@ Grid.prototype.append = function(rows)
         var appendedRows = [];
         for (var i = 0; i < rows.length; i++)
         {
-            if (appendRow.call(this, rows[i]))
+            var row = rows[i];
+            for (var j = 0; j < this.columns.length; j++) {
+                var column = this.columns[j];
+                row[column.id] = column.converter.from(row[column.id]);
+            }
+            if (appendRow.call(this, row))
             {
-                appendedRows.push(rows[i]);
+                appendedRows.push(row);
             }
         }
         sortRows.call(this);
