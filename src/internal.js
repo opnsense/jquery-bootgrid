@@ -115,9 +115,10 @@ function loadColumns()
                 cssClass: data.cssClass || "",
                 headerCssClass: data.headerCssClass || "",
                 formatter: that.options.formatters[data.formatter] || null,
-                order: sortingStorage === null ?
-                    ((!sorted && (data.order === "asc" || data.order === "desc")) ? data.order : null) :
-                    ((sortingStorage === "asc" || sortingStorage === "desc") ? sortingStorage : null),
+                order: !sorted ?
+                    (sortingStorage === null ? (data.order === "asc" || data.order === "desc" ? data.order : null) :
+                        (sortingStorage === "asc" || sortingStorage === "desc" ? sortingStorage : null)) :
+                    null, // If no other column is sorted already (or multiSort is enabled), check if sorting was stored
                 searchable: !(data.searchable === false), // default: true
                 sortable: !(data.sortable === false), // default: true
                 visible: visibilityStorage === null ? !(data.visible === false) : (visibilityStorage === 'true'), // default: true
@@ -842,7 +843,7 @@ function setTableHeaderSortDirection(element)
         this.sortDictionary = {};
         for (var i = 0; i < this.columns.length; i++)
         {
-            localStorage.removeItem('sortColumns[' + this.uid + '][' + i + ']');
+            localStorage.removeItem('sortColumns[' + this.uid + '][' + this.columns[i].id + ']');
         }
     }
 
