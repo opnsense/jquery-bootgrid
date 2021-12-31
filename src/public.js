@@ -38,6 +38,7 @@ var Grid = function(element, options)
     this.header = null;
     this.footer = null;
     this.xqr = null;
+    this.uid = window.location.pathname + "#" + this.element.attr('id');
 
     // todo: implement cache
 };

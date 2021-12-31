@@ -1,5 +1,5 @@
 /*! 
- * jQuery Bootgrid v1.3.5 - 11/17/2021
+ * jQuery Bootgrid v1.4.0 - 12/31/2021
  * Copyright © 2014-2015 Rafael J. Staib; Copyright © 2018-2021 Deciso B.V. (http://www.jquery-bootgrid.com)
  * Licensed under the MIT license. See LICENSE.txt for more details.
  */
@@ -78,6 +78,7 @@ function init()
 
     loadColumns.call(this); // Loads columns from HTML thead tag
     this.selection = this.options.selection && this.identifier != null;
+    this.rowCount = localStorage.getItem('rowCount[' + this.uid + ']') || this.rowCount;
     loadRows.call(this); // Loads rows from HTML tbody tag if ajax is false
     prepareTable.call(this);
     renderTableHeader.call(this);
@@ -112,6 +113,8 @@ function loadColumns()
     {
         var $this = $(this),
             data = $this.data(),
+            visibilityStorage = localStorage.getItem('visibleColumns[' + that.uid + '][' + data.columnId + ']'),
+            sortingStorage = localStorage.getItem('sortColumns[' + that.uid + '][' + data.columnId + ']'),
             column = {
                 id: data.columnId,
                 identifier: that.identifier == null && data.identifier || false,
@@ -122,10 +125,12 @@ function loadColumns()
                 cssClass: data.cssClass || "",
                 headerCssClass: data.headerCssClass || "",
                 formatter: that.options.formatters[data.formatter] || null,
-                order: (!sorted && (data.order === "asc" || data.order === "desc")) ? data.order : null,
+                order: sortingStorage === null ?
+                    ((!sorted && (data.order === "asc" || data.order === "desc")) ? data.order : null) :
+                    ((sortingStorage === "asc" || sortingStorage === "desc") ? sortingStorage : null),
                 searchable: !(data.searchable === false), // default: true
                 sortable: !(data.sortable === false), // default: true
-                visible: !(data.visible === false), // default: true
+                visible: visibilityStorage === null ? !(data.visible === false) : (visibilityStorage === 'true'), // default: true
                 visibleInSelection: !(data.visibleInSelection === false), // default: true
                 width: ($.isNumeric(data.width)) ? data.width + "px" :
                     (typeof(data.width) === "string") ? data.width : null
@@ -393,9 +398,10 @@ function renderColumnSelection(actions)
 
                             var $this = $(this),
                                 checkbox = $this.find(checkboxSelector);
+                            localStorage.setItem('visibleColumns[' + that.uid + '][' + column.id + ']', checkbox.prop("checked"));
                             if (!checkbox.prop("disabled"))
                             {
-                                column.visible = checkbox.prop("checked");
+                                column.visible = localStorage.getItem('visibleColumns[' + that.uid + '][' + column.id + ']') === 'true';
                                 var enable = that.columns.where(isVisible).length > 1;
                                 $this.parents(itemsSelector).find(selector + ":has(" + checkboxSelector + ":checked)")
                                     ._bgEnableAria(enable).find(checkboxSelector)._bgEnableField(enable);
@@ -559,10 +565,12 @@ function renderRowCountSelection(actions)
 
                         var $this = $(this),
                             newRowCount = $this.data("action");
+                        localStorage.setItem('rowCount[' + that.uid + ']', newRowCount);
                         if (newRowCount !== that.rowCount)
                         {
                             // todo: sophisticated solution needed for calculating which page is selected
                             that.current = 1; // that.rowCount === -1 ---> All
+                            localStorage.setItem('current[' + that.uid + ']', that.current);
                             that.rowCount = newRowCount;
                             $this.parents(menuItemsSelector).children().each(function ()
                             {
@@ -843,11 +851,16 @@ function setTableHeaderSortDirection(element)
     {
         element.parents("tr").first().find(iconSelector).removeClass(css.iconDown + " " + css.iconUp);
         this.sortDictionary = {};
+        for (var i = 0; i < this.columns.length; i++)
+        {
+            localStorage.removeItem('sortColumns[' + this.uid + '][' + i + ']');
+        }
     }
 
     if (sortOrder && sortOrder === "asc")
     {
         this.sortDictionary[columnId] = "desc";
+        localStorage.setItem('sortColumns[' + this.uid + '][' + columnId + ']', "desc");
         icon.removeClass(css.iconUp).addClass(css.iconDown);
     }
     else if (sortOrder && sortOrder === "desc")
@@ -863,17 +876,20 @@ function setTableHeaderSortDirection(element)
                 }
             }
             this.sortDictionary = newSort;
+            localStorage.removeItem('sortColumns[' + this.uid + '][' + columnId + ']');
             icon.removeClass(css.iconDown);
         }
         else
         {
             this.sortDictionary[columnId] = "asc";
+            localStorage.setItem('sortColumns[' + this.uid + '][' + columnId + ']', "asc");
             icon.removeClass(css.iconDown).addClass(css.iconUp);
         }
     }
     else
     {
         this.sortDictionary[columnId] = "asc";
+        localStorage.setItem('sortColumns[' + this.uid + '][' + columnId + ']', "asc");
         icon.addClass(css.iconUp);
     }
 }
@@ -997,6 +1013,7 @@ var Grid = function(element, options)
     this.header = null;
     this.footer = null;
     this.xqr = null;
+    this.uid = window.location.pathname + "#" + this.element.attr('id');
 
     // todo: implement cache
 };

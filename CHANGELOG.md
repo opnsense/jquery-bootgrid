@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.0
+### Enhancements & Features
+- Store sort order, column selection and row count in browser's localStorage
+
 ## 1.3.3
 ### Enhancements & Features
 - Update dependencies to 2018 versions, eliminating 72 vulnerabilities.
