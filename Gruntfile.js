@@ -7,7 +7,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         fontawesome: 'fa',
-        banner: '/*! <%= "\\r\\n * " + pkg.title %> v<%= pkg.version %> - <%= grunt.template.today("mm/dd/yyyy") + "\\r\\n" %>' +
+        banner: '/*!<%= "\\r\\n * " + pkg.title %> v<%= pkg.version %> - <%= grunt.template.today("mm/dd/yyyy") + "\\r\\n" %>' +
             ' * Copyright © 2014-2015 Rafael J. Staib; Copyright © 2018-<%= grunt.template.today("yyyy") %> <%= pkg.author.name %> <%= (pkg.homepage ? "(" + pkg.homepage + ")" : "") + "\\r\\n" %>' +
             ' * Licensed under the <%= pkg.license + " license. See LICENSE.txt for more details." + "\\r\\n */\\r\\n" %>',
         folders: {
@@ -55,7 +55,7 @@ module.exports = function (grunt) {
                 options: {
                     separator: '\r\n\r\n',
                     banner: '<%= banner %>;(function ($, window, undefined)\r\n{\r\n    /*jshint validthis: true */\r\n    "use strict";\r\n\r\n',
-                    footer: '\r\n})(jQuery, window);',
+                    footer: '\r\n})(jQuery, window);\r\n',
                     process: function (src, filepath) {
                         var result = src.trim().replace(/(.+?\r\n)/gm, '    $1'),
                             end = [0, ""],

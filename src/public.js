@@ -110,6 +110,7 @@ Grid.defaults = {
     highlightRows: false, // highlights new rows (find the page of the first new row)
     sorting: true,
     multiSort: false,
+    resetButton: false,
 
     /**
      * General search settings to configure the search field behaviour.
@@ -330,6 +331,7 @@ Grid.defaults = {
         iconRefresh: "glyphicon-refresh",
         iconSearch: "glyphicon-search",
         iconUp: "glyphicon-chevron-up",
+        iconReset: "glyphicon-flash",
         infos: "infos", // must be a unique class name or constellation of class names within the header and footer,
         left: "text-left",
         pagination: "pagination", // must be a unique class name or constellation of class names within the header and footer
@@ -390,6 +392,7 @@ Grid.defaults = {
         loading: "Loading...",
         noResults: "No results found!",
         refresh: "Refresh",
+        reset: "Reset stored settings and reload the page",
         search: "Search"
     },
 

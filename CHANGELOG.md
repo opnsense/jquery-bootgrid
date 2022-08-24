@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.1
+### Enhancements & Features
+- Add Reset button to clear browser's localStorage and refresh page
+### Bug fixes
+- Minor bugfix in localstorage usage for rowCount
+
 ## 1.4.0
 ### Enhancements & Features
 - Store sort order, column selection and row count in browser's localStorage
