@@ -1,5 +1,5 @@
 /*!
- * jQuery Bootgrid v1.4.1 - 08/24/2022
+ * jQuery Bootgrid v1.4.1 - 08/25/2022
  * Copyright © 2014-2015 Rafael J. Staib; Copyright © 2018-2022 Deciso B.V. (http://www.jquery-bootgrid.com)
  * Licensed under the MIT license. See LICENSE.txt for more details.
  */
@@ -1326,7 +1326,7 @@
             iconRefresh: "glyphicon-refresh",
             iconSearch: "glyphicon-search",
             iconUp: "glyphicon-chevron-up",
-            iconReset: "glyphicon-flash",
+            iconReset: "glyphicon-random",
             infos: "infos", // must be a unique class name or constellation of class names within the header and footer,
             left: "text-left",
             pagination: "pagination", // must be a unique class name or constellation of class names within the header and footer

@@ -331,7 +331,7 @@ Grid.defaults = {
         iconRefresh: "glyphicon-refresh",
         iconSearch: "glyphicon-search",
         iconUp: "glyphicon-chevron-up",
-        iconReset: "glyphicon-flash",
+        iconReset: "glyphicon-random",
         infos: "infos", // must be a unique class name or constellation of class names within the header and footer,
         left: "text-left",
         pagination: "pagination", // must be a unique class name or constellation of class names within the header and footer
