@@ -353,6 +353,26 @@ function renderActions()
                 actions.append(refresh);
             }
 
+            // Reset Button
+            if (this.options.resetButton)
+            {
+                var resetIcon = tpl.icon.resolve(getParams.call(this, { iconCss: css.iconReset })),
+                    reset = $(tpl.actionButton.resolve(getParams.call(this,
+                        { content: resetIcon, text: this.options.labels.reset })))
+                        .on("click" + namespace, function (e)
+                        {
+                            e.stopPropagation();
+                            for (var i = 0; i < that.columns.length; i++)
+                            {
+                                localStorage.removeItem('sortColumns[' + that.uid + '][' + that.columns[i].id + ']');
+                                localStorage.removeItem('visibleColumns[' + that.uid + '][' + that.columns[i].id + ']');
+                            }
+                            localStorage.removeItem('rowCount[' + that.uid + ']');
+                            location.reload();
+                        });
+                actions.append(reset);
+            }
+
             // Row count selection
             renderRowCountSelection.call(this, actions);
 

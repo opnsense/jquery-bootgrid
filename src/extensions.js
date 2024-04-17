@@ -9,8 +9,8 @@ $.fn.extend({
 
     _bgBusyAria: function(busy)
     {
-        return (busy == null || busy) ? 
-            this._bgAria("busy", "true") : 
+        return (busy == null || busy) ?
+            this._bgAria("busy", "true") :
             this._bgAria("busy", "false");
     },
 
@@ -21,29 +21,29 @@ $.fn.extend({
 
     _bgEnableAria: function (enable)
     {
-        return (enable == null || enable) ? 
-            this.removeClass("disabled")._bgAria("disabled", "false") : 
+        return (enable == null || enable) ?
+            this.removeClass("disabled")._bgAria("disabled", "false") :
             this.addClass("disabled")._bgAria("disabled", "true");
     },
 
     _bgEnableField: function (enable)
     {
-        return (enable == null || enable) ? 
-            this.removeAttr("disabled") : 
+        return (enable == null || enable) ?
+            this.removeAttr("disabled") :
             this.attr("disabled", "disable");
     },
 
     _bgShowAria: function (show)
     {
-        return (show == null || show) ? 
+        return (show == null || show) ?
             this.show()._bgAria("hidden", "false") :
             this.hide()._bgAria("hidden", "true");
     },
 
     _bgSelectAria: function (select)
     {
-        return (select == null || select) ? 
-            this.addClass("active")._bgAria("selected", "true") : 
+        return (select == null || select) ?
+            this.addClass("active")._bgAria("selected", "true") :
             this.removeClass("active")._bgAria("selected", "false");
     },
 
@@ -133,8 +133,8 @@ if (!Array.prototype.page)
     {
         var skip = (page - 1) * size,
             end = skip + size;
-        return (this.length > skip) ? 
-            (this.length > end) ? this.slice(skip, end) : 
+        return (this.length > skip) ?
+            (this.length > end) ? this.slice(skip, end) :
                 this.slice(skip) : [];
     };
 }
