@@ -718,11 +718,14 @@ function renderSearchField()
             var that = this,
                 tpl = this.options.templates,
                 timer = null, // fast keyup detection
-                currentValue = "",
+                currentValue = this.searchPhrase,
                 searchFieldSelector = getCssSelector(css.searchField),
                 search = $(tpl.search.resolve(getParams.call(this))),
                 searchField = (search.is(searchFieldSelector)) ? search :
                     search.find(searchFieldSelector);
+
+            // populate search field if initial search phrase provided
+            $(searchField).val(currentValue);
 
             searchField.on("keyup" + namespace, function (e)
             {
